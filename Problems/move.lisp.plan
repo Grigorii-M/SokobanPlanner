@@ -1,0 +1,8 @@
+( MOVE T_0_0 T_0_1 )
+( MOVE T_0_1 T_0_2 )
+( MOVE T_0_2 T_0_3 )
+( MOVE T_0_3 T_1_3 )
+( MOVE T_1_3 T_2_3 )
+( MOVE T_2_3 T_3_3 )
+( MOVE T_3_3 T_4_3 )
+( MOVE T_4_3 T_4_4 )
