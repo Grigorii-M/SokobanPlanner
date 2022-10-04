@@ -92,3 +92,4 @@
     (:goal
       (at sokoban t_4_4)
     )
+  )

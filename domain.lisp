@@ -22,10 +22,6 @@
     (same_direction ?x - tile ?y - tile ?x - tile)
   )
 
-  (:functions
-
-  )
-
   (:action move
     :parameters(?x - tile ?y - tile)
     :precondition(and (at sokoban ?x) (adjacent ?x ?y))

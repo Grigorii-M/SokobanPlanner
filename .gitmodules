@@ -1,0 +1,3 @@
+[submodule "planutils"]
+	path = planutils
+	url = https://github.com/AI-Planning/planutils.git
