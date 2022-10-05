@@ -9,7 +9,10 @@ Additionally, create three or more problems in this domain.
 
 ## Domain description
 
-My domain is based on an old game called [Sokoban](https://en.wikipedia.org/wiki/Sokoban) with several additions to make it more challenging.
+My domain is based on an old game called [Sokoban](https://en.wikipedia.org/wiki/Sokoban) with several additions to make it more challenging.  
+There is a new object - bomb, which can be used to destroy walls.  
+In this version the player (Sokoban) can not only push boxes but also pull them.  
+Some boxed can be immovable. In order to move them the player should blow them up with a bomb, however movable boxes can be destroyed by it.
 
 ### Types
 
@@ -36,8 +39,10 @@ The domain uses six different predicates:
 | `inaccessible`   | `x` - tile                       | Can tile `x` be stepped on                          |
 | `box_immovable`  | `b` - box                        | Can box `b` be moved                                |
 
-The last two predicates are negated by design, because it is less time consuming to mark several tiles and boxes as inaccessible and immovable rather than marking allmost all as accessible and movable.
-It is assumed by all of the actions that move or destroy boxes, walls and bombs that the tiles on which they stay are marked as inaccessible.
+##### Notes
+
+The last two predicates are negated by design, because it is less time consuming to mark several tiles and boxes as inaccessible and immovable rather than marking allmost all as accessible and movable.  
+It is assumed by all of the actions that move or destroy boxes, walls and bombs that the tiles on which they stay are marked as inaccessible. Though any tile can be marked as inaccessible.
 
 ### Actions
 
@@ -171,4 +176,23 @@ To reach the goal Sokoban can use eight different actions:
 
 ## Problems
 
-The set of example problems this planner can solve could be found in `Problems` directory, their soulutions are places in `Plans` directory.
+The set of example problems this planner can solve could be found in `Problems` directory, their soulutions are in `Plans` directory.  
+They were used during testing of the planner, therefore each problem tries to focus on one feature.
+
+| Name                     | Description                                                                                                            |
+|--------------------------|------------------------------------------------------------------------------------------------------------------------|
+| move                     | This problem includes the biggest map of all. Here the ability to move in big spaces was tested.                       |
+| you\_can\_only\_push     | The only solution to this problem requires pushing the box.                                                            |
+| you\_can\_only\_pull     | The only solution to this problem requires pulling the box.                                                            |
+| blow\_stuff\_up          | The goal is to destroy two boxes using two bombs.                                                                      |
+| blow\_up\_walls          | The solution to this problem requires destroying the wall.                                                             |
+| dont\_blow\_up\_the\_box | Was used to test the ability to destroy several things around the bomb. However, with current rules posseses no value. |
+| turn\_movable         | The solution to this problem requires to turn immovable box into movable.                                              |
+
+## Conclusion
+
+The result of this work is a rather intelligent system that can solve a problem inside of its domain.
+However there are several points where improvements could be made.  
+One such improvement could be to replace predicates `entity_at` and `inaccessible` with only one predicate.
+This predicate should make the tiles inaccessible only if there is something on them.
+This will simplify the creation of the problems for the system to solve as well as the effects of several actions.
