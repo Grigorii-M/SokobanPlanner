@@ -1,1 +1,4 @@
-*.plan
+strips_visualizer/debug/
+strips_visualizer/target/
+strips_visualizer/Cargo.lock
+**/*.rs.bk

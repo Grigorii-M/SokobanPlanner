@@ -1,6 +1,6 @@
-;;;; Here we test, whether Sokoban can blow up walls to get to destination
+;;;; Here we test that Sokoban will not destroy the box
 
-(define (problem blow_up_walls)
+(define (problem dont_blow_up_the_box)
   (:domain SokobanOnSteroids)
   (:objects
     ;;; The map
