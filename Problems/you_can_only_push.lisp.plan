@@ -1,0 +1,4 @@
+( MOVE T_0_0 T_0_1 )
+( PUSH_BOX T_0_1 T_0_2 T_0_3 BOX1 )
+( MOVE T_0_2 T_1_2 )
+( MOVE T_1_2 T_2_2 )

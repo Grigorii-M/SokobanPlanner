@@ -5,7 +5,7 @@
   )
 
   (:types
-    entity location - object
+    entity location - type
 
     tile - location
     
@@ -15,8 +15,8 @@
   )
 
   (:predicates
-    (sokoban_at ?p - tile) ;; whether sokoban is at position x
-    (entity_at ?o - entity ?t - tile)
+    (sokoban_at ?x - tile) ;; whether sokoban is at position x
+    (entity_at ?e - entity ?x - tile)
     (adjacent ?x - tile ?y - tile) ;; whether x tile is adjacent to y tile
     ;; whether movements x -> y and y -> z are in the same direction
     (same_direction ?x - tile ?y - tile ?x - tile)
@@ -33,7 +33,7 @@
   (:action push_box
     :parameters(
       ?x - tile ;; sokoban's current position
-      ?y - tile ;; sokoban's next position and the box' current position
+      ?y - tile ;; sokoban's next posit/ion and the box' current position
       ?z - tile ;; box' new position
       ?b - box
     )
@@ -138,21 +138,21 @@
       ?y - tile ;; bomb's position
       ?b - bomb
 
-      ?t - tile
-      ?e - wall
+      ?z - tile
+      ?w - wall
     )
     :precondition(and
       (sokoban_at ?x)
       (entity_at ?b ?y)
-      (entity_at ?e ?t)
+      (entity_at ?w ?z)
       (adjacent ?x ?y)
-      (same_direction ?x ?y ?t)
+      (same_direction ?x ?y ?z)
     )
     :effect(and
       (not (entity_at ?b ?y))
       (not (inaccessible ?y))
-      (not (entity_at ?e ?t))
-      (not (inaccessible ?t))
+      (not (entity_at ?w ?z))
+      (not (inaccessible ?z))
     )
   )
 
@@ -162,22 +162,22 @@
       ?y - tile ;; bomb's position
       ?b - bomb
 
-      ?t - tile
+      ?z - tile
       ?e - box
     )
     :precondition(and
       (sokoban_at ?x)
       (entity_at ?b ?y)
-      (entity_at ?e ?t)
+      (entity_at ?e ?z)
       (adjacent ?x ?y)
-      (same_direction ?x ?y ?t)
+      (same_direction ?x ?y ?z)
       (not (box_immovable ?e))
     )
     :effect(and
       (not (entity_at ?b ?y))
       (not (inaccessible ?y))
-      (not (entity_at ?e ?t))
-      (not (inaccessible ?t))
+      (not (entity_at ?e ?z))
+      (not (inaccessible ?z))
     )
   )
   
@@ -187,15 +187,15 @@
       ?y - tile ;; bomb's position
       ?b - bomb
 
-      ?t - tile
+      ?z - tile
       ?e - box
     )
     :precondition(and
       (sokoban_at ?x)
       (entity_at ?b ?y)
-      (entity_at ?e ?t)
+      (entity_at ?e ?z)
       (adjacent ?x ?y)
-      (same_direction ?x ?y ?t)
+      (same_direction ?x ?y ?z)
       (box_immovable ?e)
     )
     :effect(and
