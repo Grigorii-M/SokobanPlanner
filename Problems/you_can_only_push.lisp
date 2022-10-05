@@ -19,7 +19,6 @@
 
     ;;; Other
     box1 - box
-    bomb1 - bomb
   )
 
   (:init
@@ -39,7 +38,7 @@
 
     ;;; Set up the objects
     (sokoban_at t_0_0)
-    (object_at box1 t_0_2)
+    (entity_at box1 t_0_2)
     (inaccessible t_0_2)
   )
 

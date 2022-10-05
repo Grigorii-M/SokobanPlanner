@@ -4,9 +4,9 @@
   (:domain SokobanOnSteroids)
   (:objects
     ;;; The map
+    ;; b _ B
     ;; b _ _
-    ;; b _ _
-    ;; X B X
+    ;; _ B _
     ;;   S
 
     t_0_0 - tile
@@ -28,6 +28,7 @@
     box2 - box
     box3 - box
     bomb1 - bomb
+    bomb2 - bomb
   )
 
   (:init
@@ -68,40 +69,43 @@
     ;;; Set up the objects
     (sokoban_at t_1_3)
 
-    (object_at bomb1 t_1_2)
+    (entity_at bomb1 t_1_2)
     (inaccessible t_1_2)
 
-    (object_at box1 t_0_0)
+    (entity_at bomb2 t_2_0)
+    (inaccessible t_2_0)
+
+    (entity_at box1 t_0_0)
     (inaccessible t_0_0)
     
-    (object_at box2 t_0_1)
+    (entity_at box2 t_0_1)
     (inaccessible t_0_1)
   )
 
   (:goal
     (and
-      (not (object_at box1 t_0_0))
-      (not (object_at box1 t_0_1))
-      (not (object_at box1 t_0_2))
-      (not (object_at box1 t_1_0))
-      (not (object_at box1 t_1_1))
-      (not (object_at box1 t_1_2))
-      (not (object_at box1 t_1_3))
-      (not (object_at box1 t_2_0))
-      (not (object_at box1 t_2_1))
-      (not (object_at box1 t_2_2))
+      (not (entity_at box1 t_0_0))
+      (not (entity_at box1 t_0_1))
+      (not (entity_at box1 t_0_2))
+      (not (entity_at box1 t_1_0))
+      (not (entity_at box1 t_1_1))
+      (not (entity_at box1 t_1_2))
+      (not (entity_at box1 t_1_3))
+      (not (entity_at box1 t_2_0))
+      (not (entity_at box1 t_2_1))
+      (not (entity_at box1 t_2_2))
 
-      (not (object_at box2 t_0_0))
-      (not (object_at box2 t_0_1))
-      (not (object_at box2 t_0_2))
-      (not (object_at box2 t_1_0))
-      (not (object_at box2 t_1_1))
-      (not (object_at box2 t_1_2))
-      (not (object_at box2 t_1_3))
-      (not (object_at box2 t_2_0))
-      (not (object_at box2 t_2_1))
-      (not (object_at box2 t_2_2))
-      (not (object_at bomb1 t_1_2))
+      (not (entity_at box2 t_0_0))
+      (not (entity_at box2 t_0_1))
+      (not (entity_at box2 t_0_2))
+      (not (entity_at box2 t_1_0))
+      (not (entity_at box2 t_1_1))
+      (not (entity_at box2 t_1_2))
+      (not (entity_at box2 t_1_3))
+      (not (entity_at box2 t_2_0))
+      (not (entity_at box2 t_2_1))
+      (not (entity_at box2 t_2_2))
+      (not (entity_at bomb1 t_1_2))
     )
   )
 )
