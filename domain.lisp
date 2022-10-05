@@ -5,14 +5,16 @@
   )
 
   (:types
-    object location agent - type
+    object location - type
     tile - location
-    box - object
-    bomb - object
+    movable - object
+    box - movable
+    bomb - movable
+    wall - object
   )
 
   (:predicates
-    (at ?x - agent ?p - tile) ;; whether sokoban is at position x
+    (sokoban_at ?p - tile) ;; whether sokoban is at position x
     (object_at ?o - object ?t - tile)
     (adjacent ?x - tile ?y - tile) ;; whether x tile is adjacent to y tile
     ;; whether movements x -> y and y -> z are in the same direction
@@ -22,8 +24,8 @@
 
   (:action move
     :parameters(?x - tile ?y - tile)
-    :precondition(and (at sokoban ?x) (adjacent ?x ?y) (not (inaccessible ?y)))
-    :effect(and (not (at sokoban ?x)) (at sokoban ?y))
+    :precondition(and (sokoban_at ?x) (adjacent ?x ?y) (not (inaccessible ?y)))
+    :effect(and (not (sokoban_at ?x)) (sokoban_at ?y))
   )
 
   (:action push
@@ -31,10 +33,10 @@
       ?x - tile ;; sokoban's current position
       ?y - tile ;; sokoban's next position and the box' current position
       ?z - tile ;; box' new position
-      ?b - object
+      ?b - movable
     )
     :precondition(and
-      (at sokoban ?x)
+      (sokoban_at ?x)
       (or (adjacent ?x ?y) (adjacent ?y ?x))
       (or (adjacent ?x ?y) (adjacent ?y ?x))
       (not (inaccessible ?z))
@@ -42,8 +44,8 @@
       (same_direction ?x ?y ?z)
     )
     :effect(and
-      (not (at sokoban ?x))
-      (at sokoban ?y)
+      (not (sokoban_at ?x))
+      (sokoban_at ?y)
       (not (object_at ?b ?y))
       (object_at ?b ?z)
       (not (inaccessible ?y))
@@ -56,10 +58,10 @@
       ?x - tile ;; sokoban's next position
       ?y - tile ;; sokoban's current position and the box' next position
       ?z - tile ;; box' current position
-      ?b - object
+      ?b - movable
     )
     :precondition(and
-      (at sokoban ?y)
+      (sokoban_at ?y)
       (or (adjacent ?x ?y) (adjacent ?y ?x))
       (or (adjacent ?x ?y) (adjacent ?y ?x))
       (not (inaccessible ?x))
@@ -67,8 +69,8 @@
       (same_direction ?x ?y ?z)
     )
     :effect(and
-      (not (at sokoban ?y))
-      (at sokoban ?x)
+      (not (sokoban_at ?y))
+      (sokoban_at ?x)
       (not (object_at ?b ?z))
       (object_at ?b ?y)
       (not (inaccessible ?z))
@@ -92,7 +94,7 @@
       ?b3 - box
     )
     :precondition(and
-      (at sokoban ?x)
+      (sokoban_at ?x)
       (object_at ?b ?y)
       (adjacent ?x ?y)
       (and

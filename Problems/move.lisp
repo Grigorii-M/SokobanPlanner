@@ -37,7 +37,6 @@
     t_4_4 - tile
 
     ;;; Other
-    sokoban - agent
     box1 - box
     bomb1 - bomb
   )
@@ -97,7 +96,7 @@
     (adjacent t_4_3 t_4_4)(adjacent t_4_4 t_4_3)
 
     ;;; Set up the objects
-    (at sokoban t_0_0)
+    (sokoban_at t_0_0)
 
     (inaccessible t_2_0)
     (inaccessible t_3_1)
@@ -105,6 +104,6 @@
   )
 
   (:goal
-    (at sokoban t_4_4)
+    (sokoban_at t_4_4)
   )
 )

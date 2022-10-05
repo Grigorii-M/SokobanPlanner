@@ -29,7 +29,6 @@
     t_2_4 - tile
 
     ;;; Other
-    sokoban - agent
     box1 - box
     bomb1 - bomb
   )
@@ -81,12 +80,12 @@
     (same_direction t_0_2 t_0_3 t_0_4)(same_direction t_0_4 t_0_3 t_0_2)
 
     ;;; Set up the objects
-    (at sokoban t_0_0)
+    (sokoban_at t_0_0)
     (object_at box1 t_0_3)
     (inaccessible t_0_3)
   )
 
   (:goal
-    (at sokoban t_2_4)
+    (sokoban_at t_2_4)
   )
 )
