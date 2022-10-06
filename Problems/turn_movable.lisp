@@ -5,7 +5,7 @@
   (:objects
     ;;; The map
     ;; _ _ _
-    ;; b B S
+    ;; c B S
     ;; *
 
     t_0_0 - tile
