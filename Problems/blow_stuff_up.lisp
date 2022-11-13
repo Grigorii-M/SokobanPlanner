@@ -26,7 +26,6 @@
     ;;; Other
     box1 - box
     box2 - box
-    box3 - box
     bomb1 - bomb
     bomb2 - bomb
   )
